@@ -22,7 +22,7 @@ pipeline {
                     env.ARM_TENANT_ID = azureCreds.tenantId
                 } catch (Exception e) {
                       error("Failed to load Azure credentials: ${e.message}")
-                  }
+                }
             }
         }
         stage('checkout') {
