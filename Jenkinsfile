@@ -4,14 +4,25 @@ pipeline {
     }
     environment {
         AZURE_CREDENTIALS_ID = 'AzureServicePrincipal'
-        ARM_CLIENT_ID = credentials('AZURE_CREDENTIALS_ID').clientId
+/*        ARM_CLIENT_ID = credentials('AZURE_CREDENTIALS_ID').clientId
         ARM_CLIENT_SECRET = credentials('AZURE_CREDENTIALS_ID').clienSecretId
         ARM_SUBSCRIPTION_ID = credentials('AZURE_CREDENTIALS_ID').subcriptionId
-        ARM_TENANT_ID = credentials('AZURE_CREDENTIALS_ID').tenantId
+        ARM_TENANT_ID = credentials('AZURE_CREDENTIALS_ID').tenantId*/
         ARM_ENVIRONMENT = 'public'
     }
     agent any
     stages {
+        stage('Prepare') {
+            steps {
+                script {
+                    def azureCreds = credentials('AzureServicePrincipal')
+                    env.ARM_CLIENT_ID = azurecreds.clientId
+                    env.ARM_CLIENT_SECRET = azureCreds.clientSecret
+                    env.ARM_SUBSCRIPTION_ID = azureCreds.subscriptionId
+                    env.ARM_TENANT_ID = azureCreds.tenantId
+                }
+            }
+        }
         stage('checkout') {
             steps {
                 script {
