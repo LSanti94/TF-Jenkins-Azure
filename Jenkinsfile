@@ -16,7 +16,7 @@ pipeline {
             steps {
                 script {
                     def azureCreds = credentials('AzureServicePrincipal')
-                    env.ARM_CLIENT_ID = azurecreds.clientId
+                    env.ARM_CLIENT_ID = azureCreds.clientId
                     env.ARM_CLIENT_SECRET = azureCreds.clientSecret
                     env.ARM_SUBSCRIPTION_ID = azureCreds.subscriptionId
                     env.ARM_TENANT_ID = azureCreds.tenantId
