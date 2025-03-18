@@ -20,10 +20,9 @@ pipeline {
                     env.ARM_CLIENT_SECRET = azureCreds.clientSecret
                     env.ARM_SUBSCRIPTION_ID = azureCreds.subscriptionId
                     env.ARM_TENANT_ID = azureCreds.tenantId
-                }
-                    catch (Exception e) {
-                        error("Failed to load Azure credentials: ${e.message}")
-                    }
+                } catch (Exception e) {
+                      error("Failed to load Azure credentials: ${e.message}")
+                  }
             }
         }
         stage('checkout') {
