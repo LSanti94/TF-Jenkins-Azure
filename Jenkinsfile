@@ -3,10 +3,12 @@ pipeline {
         booleanParam(name: 'autoApprove', defaultValue: false, description: 'Automatically run apply after generating plan?')
     }
     environment {
-        ARM_CLIENT_ID = credentials('azure-client-id')
-        ARM_CLIENT_SECRET = credentials('azure-client-secret')
-        ARM_SUBSCRIPTION_ID = credentials('azure-subscription-id')
-        ARM_TENANT_ID = credentials('azure-tenant-id')
+        AZURE_CREDENTIALS_ID = 'AzureServicePrincipal'
+        ARM_CLIENT_ID = credentials("${AZURE_CREDENTIALS_ID}").clientId
+        ARM_CLIENT_SECRET = credentials("${AZURE_CREDENTIALS_ID}").clienSecretId
+        ARM_SUBSCRIPTION_ID = credentials("${AZURE_CREDENTIALS_ID}").subcriptionId
+        ARM_TENANT_ID = credentials("${AZURE_CREDENTIALS_ID}").tenantID
+        ARM_ENVIRONMENT = 'public'
     }
     agent any
     stages {
