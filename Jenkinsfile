@@ -6,7 +6,7 @@ pipeline {
         AZURE_CLIENT_ID       = credentials('Azure_Client_ID')
         AZURE_CLIENT_SECRET   = credentials('Azure_Client_Secret')
         AZURE_TENANT_ID       = credentials('Azure_Tenant_ID')
-/*        AZURE_SUBSCRIPTION_ID = credentials('Azure_Subscription_ID')*/
+        AZURE_SUBSCRIPTION_ID = credentials('Azure_Subscription_ID')
     }
     agent any
     stages {
