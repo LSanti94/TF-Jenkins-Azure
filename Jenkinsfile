@@ -4,10 +4,10 @@ pipeline {
     }
     environment {
         AZURE_CREDENTIALS_ID = 'AzureServicePrincipal'
-        ARM_CLIENT_ID = credentials("${AZURE_CREDENTIALS_ID}").clientId
-        ARM_CLIENT_SECRET = credentials("${AZURE_CREDENTIALS_ID}").clienSecretId
-        ARM_SUBSCRIPTION_ID = credentials("${AZURE_CREDENTIALS_ID}").subcriptionId
-        ARM_TENANT_ID = credentials("${AZURE_CREDENTIALS_ID}").tenantID
+        ARM_CLIENT_ID = "${credentials('AZURE_CREDENTIALS_ID').clientId}"
+        ARM_CLIENT_SECRET = "${credentials('AZURE_CREDENTIALS_ID').clienSecretId}"
+        ARM_SUBSCRIPTION_ID = "${credentials('AZURE_CREDENTIALS_ID').subcriptionId}"
+        ARM_TENANT_ID = "${credentials('AZURE_CREDENTIALS_ID').tenantId}"
         ARM_ENVIRONMENT = 'public'
     }
     agent any
